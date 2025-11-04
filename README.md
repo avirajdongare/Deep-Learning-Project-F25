@@ -1,7 +1,8 @@
 # 🧮 MathVerifier — Llama-3 8B Fine-Tuning for Math Answer Verification
 
 
-This project fine-tunes **Llama-3 8B** using **Supervised Fine-Tuning (SFT)** on the **Math Question Answer Verification** dataset (Hugging Face).  
+This project fine-tunes **Llama-3 8B** using **Supervised Fine-Tuning (SFT)** on the **Math Question Answer Verification** dataset (Hugging Face). 
+
 The goal is to predict whether a given math answer is **correct** or **incorrect**, based on the *question*, *answer*, and optionally the *solution/explanation*.
 
 ---
