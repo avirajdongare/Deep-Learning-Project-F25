@@ -1,54 +1,84 @@
+# 🧮 MathVerifier — Llama-3 8B Fine-Tuning for Math Answer Verification
 
-https://drive.google.com/drive/folders/1mmK1Fu3ch8xtvKJ6H9Qr-VS6d7NB_JKk?usp=sharing
 
-# ** 🧮 MathVerifier — Llama-3 8B Fine-Tuning for Math Answer Verification
-**
-
-A production-grade hybrid ML system that combines market data with real-time financial sentiment (from news, Twitter, etc.) to predict short-term stock price movements. Designed and deployed with full **MLOps** automation on Chameleon Cloud, **FinPulse** targets **quantitative hedge funds** and **alt-data research teams** seeking operational efficiency and faster signal-to-trade pipelines.
+This project fine-tunes **Llama-3 8B** using **Supervised Fine-Tuning (SFT)** on the **Math Question Answer Verification** dataset (Hugging Face).  
+The goal is to predict whether a given math answer is **correct** or **incorrect**, based on the *question*, *answer*, and optionally the *solution/explanation*.
 
 ---
 
-## 🔍 Value Proposition
+## 🔍 Overview
 
-**🎯 Target Customer:**  
-Quantitative research teams at hedge funds like Two Sigma, Citadel, or Bloomberg and personal investors.
+In this competition, participants fine-tune an LLM to verify math answers.  
+Your model receives a math question, an answer, and a reasoning explanation, and must output a boolean label:
+```
+is_correct ∈ {True, False}
+```
 
-**📊 Status Quo:**  
-These teams rely on fragmented workflows: NLP-based sentiment research, price modeling, and deployment are siloed. Retraining is ad hoc, and monitoring is minimal.
-
----
-
-### 🛠️ Our Solution:
-
-**FinPulse** automates the full ML lifecycle:
-
-- 📰 Real-time ingestion of financial data (Twitter + Vantage)
-- 💬 Sentiment extraction using **FinBERT**
-- 📉 Price prediction via **LSTM**
-- ⚙️ Serving via **FastAPI**
-- 📈 Monitoring via **Prometheus + Grafana**
-- 🔁 Retraining pipeline with **Ray + MLflow**
+The fine-tuned model learns logical and mathematical reasoning consistency from provided solutions and outputs whether the given answer is correct.
 
 ---
 
-### 📐 Business Metric Impact:
+### 🛠️ 🏋️ Model Weights
 
-- ✅ **Accuracy:** MAE, MAPE for classification metrics for sentiment  
-- ⚡ **Inference Latency:** Tracked for CPU  
-- 🧠 **Model Freshness:** Ensured via scheduled retraining and drift detection
+You can download the fine-tuned model here:
+
+[📦 Download MathVerifier_Llama3-8B_Weights](https://drive.google.com/drive/folders/1mmK1Fu3ch8xtvKJ6H9Qr-VS6d7NB_JKk?usp=sharing)
+
+---
+
+### 📐 Example
+
+> **Question:** What is the radius of the circle inscribed in triangle (ABC) if (AB = 22), (AC = 12), and (BC = 14)?  
+> **Given Answer:** 3.16227766016838  
+> **Given Solution:** The circle is inscribed in a triangle, and we know the sides of the triangle. To use the inradius formula, we need the area of the triangle. Using Heron’s formula:
+>
+> ```python
+> import math
+> from sympy import *
+> AB, AC, BC = 22, 12, 14
+> s = (AB + AC + BC) / 2
+> K = sqrt(s * (s - AB) * (s - AC) * (s - BC))
+> print(K)  # 75.8946638440411
+> r = K / s
+> print(r)  # 3.16227766016838
+> ```
+>
+> Using the inradius formula, the answer is \\( \boxed{3.16227766016838} \\).  
+> **is_correct = True**
 
 
-## Contributors
+
+### 📊 Dataset Description
+The dataset comes from the **Math Question Answer Verification Competition** hosted on **Hugging Face**.  
+It contains problems from multiple math domains and is structured as follows:
+
+| Column | Description |
+|:--------|:-------------|
+| **question** | The math question posed to the student. |
+| **answer** | The proposed or “ideal” answer to the question. |
+| **solution** | A detailed reasoning or explanation that justifies the answer. |
+| **is_correct** | Boolean label — `True` if the answer is correct, `False` otherwise. |
+
+> **Note:** In the **test set**, all `is_correct` values are placeholders set to `True`.  
+> The model must still generate predictions for evaluation.
+
+### 🧩 Dataset Loading
+```python
+from datasets import load_dataset
+
+dataset = load_dataset("ad6398/nyu-dl-teach-maths-comp")
+train_dataset = dataset["train"]
+test_dataset = dataset["test"]
+```
+
+---
+### Contributors
 
 | Name              | Responsibilities                           | 
 | ----------------- | -------------------------------------------|
 | Aviraj Dongare    | Model Training, LoRa Configuration, Tuning | 
 | Swathi Awasthi    | Inferencing and Evaluation                 | 
 | Joshua Leeman     | Preparing Data and Documentation           | 
-
-## 📏 Scale
-
-Our project meets medium-scale criteria across all three axes—**data**, **model**, and **deployment**:
 
 ---
 
