@@ -82,11 +82,9 @@ test_dataset = dataset["test"]
 
 ---
 
-### 📊 Data Scale
+### 🧠 Task
 
-- 🐦 **Tweet Dataset**  
-  - [Company_Tweet.csv](https://www.kaggle.com/datasets/omermetinn/tweets-about-the-top-companies-from-2015-to-2020/data?select=Company+Tweet.csv)  
-  - [Tweet.csv](https://www.kaggle.com/datasets/omermetinn/tweets-about-the-top-companies-from-2015-to-2020/data?select=Tweet.csv)
+Training a model that predicts the label is_correct from the fields: question, answer, and optionally solution.
 
 - 📈 **Market Data:**  
   Daily OHLC (open-high-low-close) and volume data from **Vantage**, typically spanning 10+ years, covering ~2500 data points per stock.
