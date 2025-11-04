@@ -10,7 +10,7 @@ The goal is to predict whether a given math answer is **correct** or **incorrect
 ## 🔍 Overview
 
 In this competition, participants fine-tune an LLM to verify math answers.  
-Your model receives a math question, an answer, and a reasoning explanation, and must output a boolean label:
+The model receives a math question, an answer, and a reasoning explanation, and must output a boolean label:
 ```
 is_correct ∈ {True, False}
 ```
@@ -18,13 +18,13 @@ is_correct ∈ {True, False}
 The fine-tuned model learns logical and mathematical reasoning consistency from provided solutions and outputs whether the given answer is correct.
 
 ---
-### Kaggle Competition
+### 📑 Kaggle Competition
 
 https://www.kaggle.com/competitions/dl-fall-25-kaggle-contest/overview
 
 ### 🏋️ Model Weights
 
-You can download the fine-tuned model here:
+Download the fine-tuned model here:
 
 [📦 Download MathVerifier_Llama3-8B_Weights](https://drive.google.com/drive/folders/1mmK1Fu3ch8xtvKJ6H9Qr-VS6d7NB_JKk?usp=sharing)
 
