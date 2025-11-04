@@ -39,7 +39,33 @@ You can download the fine-tuned model here:
 | Joshua Leeman     | Preparing Data and Documentation           | 
 
 ---
+### 🧱 Notebook Structure
 
+| Section | Description |
+|----------|--------------|
+| **1. Dataset Loading** | Loads the Hugging Face dataset `ad6398/nyu-dl-teach-maths-comp` for math question–answer verification. |
+| **2. Preprocessing** | Cleans and formats data into instruction-style prompts combining `question`, `answer`, and `solution`. |
+| **3. Model Setup** | Initializes the base `meta-llama/Meta-Llama-3-8B` model and tokenizer for fine-tuning. |
+| **4. Fine-Tuning (SFT)** | Uses `trl.SFTTrainer` with supervised fine-tuning on formatted prompts. |
+| **5. Evaluation** | Computes validation accuracy and compares predicted correctness with ground truth labels. |
+| **6. Inference and Submission** | Generates predictions on the test set and produces a `submission.csv` file for leaderboard evaluation. |
+
+---
+### ⚙️ Training Configuration
+
+| Parameter | Value |
+|------------|--------|
+| Model | Llama-3 8B |
+| Trainer | TRL `SFTTrainer` |
+| Epochs | 3 |
+| Batch Size | 32 |
+| Learning Rate | 1e-5 |
+| Sequence Length | 2048 |
+| Optimizer | AdamW |
+| Evaluation Metric | Accuracy |
+
+
+---
 ### 📐 Example
 
 > **Question:** What is the radius of the circle inscribed in triangle (ABC) if (AB = 22), (AC = 12), and (BC = 14)?  
@@ -126,31 +152,13 @@ The rows correspond exactly to the order of the test dataset (test.csv).
 
 ---
 
-## Components Overview
+### 📈 Key Result
 
-| Component      | Technology Stack                |
-| -------------- | ------------------------------- |
-| Text Ingestion | Kaggle                          |
-| Market Data    | Vantage                         |
-| Model Training | LSTM, FinBERT                   |
-| Serving        | Flask, Docker                   |
-| Monitoring     | Prometheus, Grafana             |
-| CI/CD          | GitHub Actions, Terraform, Helm |
-| Persistence    | MinIO, Chameleon Volumes        |
-| Infra-as-Code  | Terraform, Ansible, ArgoCD      |
-
-
-### Observations and Outcomes
-
-| **Area**                | **Outcome**                                                                 |
-|-------------------------|------------------------------------------------------------------------------|
-| **IaC Provisioning**     | Cluster created in ~3 minutes via **Terraform**                              |
-| **System Configuration** | Zero manual SSH config; fully automated with **Ansible**                     |
-| **Platform Services**    | **MLflow** + **MinIO** accessible at floating IP; secrets securely injected  |
-| **Model Training**       | LSTM models trained and logged to **MLflow**, with version metadata          |
-| **Container Build**      | **Kaniko** used to build model-serving image inside cluster                  |
-| **Argo Workflows**       | Chained workflows allowed model → build → deploy in one click                |
-| **Deployment**           | Images deployed and promoted using **Helm** + **ArgoCD** with version tags   |
+| Metric | Value |
+|:--------|:-------|
+| **Validation Accuracy** | **~86%** |
+| **Model Size** | 8 Billion parameters |
+| **Framework** | Hugging Face TRL (PEFT + LoRA) |
 
 
 
