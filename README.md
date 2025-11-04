@@ -26,7 +26,7 @@ https://www.kaggle.com/competitions/dl-fall-25-kaggle-contest/overview
 
 Download the fine-tuned model here:
 
-[📦 Download MathVerifier_Llama3-8B_Weights](https://drive.google.com/drive/folders/1mmK1Fu3ch8xtvKJ6H9Qr-VS6d7NB_JKk?usp=sharing)
+[📦 MathVerifier_Llama3-8B_Weights](https://drive.google.com/drive/folders/1mmK1Fu3ch8xtvKJ6H9Qr-VS6d7NB_JKk?usp=sharing)
 
 ---
 
