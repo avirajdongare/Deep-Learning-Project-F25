@@ -1,4 +1,4 @@
-## 🧮 MathVerifier — Llama-3 8B Fine-Tuning for Math Answer Verification
+# 🧮 MathVerifier — Llama-3 8B Fine-Tuning for Math Answer Verification
 
 
 This project fine-tunes **Llama-3 8B** using **Supervised Fine-Tuning (SFT)** on the **Math Question Answer Verification** dataset (Hugging Face). 
