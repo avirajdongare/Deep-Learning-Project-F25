@@ -35,7 +35,7 @@ Download the fine-tuned model here:
 | Name              | Responsibilities                           | 
 | ----------------- | -------------------------------------------|
 | Aviraj Dongare    | Model Training, LoRa Configuration, Tuning | 
-| Swathi Awasthi    | Inferencing and Evaluation                 | 
+| Swati Awasthi    | Inferencing and Evaluation                 | 
 | Joshua Leeman     | Preparing Data and Documentation           | 
 
 ---
