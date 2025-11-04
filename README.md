@@ -64,6 +64,15 @@ Download the fine-tuned model here:
 | Optimizer | AdamW |
 | Evaluation Metric | Accuracy |
 
+---
+
+### 🧠 Task
+
+Training a model that predicts the label is_correct from the fields: question, answer, and optionally solution.
+
+- Build a supervised fine-tuning pipeline using Llama-3 8B (or an equivalent model).
+- Leverage solution text as auxiliary supervision to improve reasoning.
+- The output should be a boolean prediction per sample.
 
 ---
 ### 📐 Example
@@ -112,26 +121,6 @@ dataset = load_dataset("ad6398/nyu-dl-teach-maths-comp")
 train_dataset = dataset["train"]
 test_dataset = dataset["test"]
 ```
----
-
-### 🧠 Task
-
-Training a model that predicts the label is_correct from the fields: question, answer, and optionally solution.
-
-- Build a supervised fine-tuning pipeline using Llama-3 8B (or an equivalent model).
-- Leverage solution text as auxiliary supervision to improve reasoning.
-- The output should be a boolean prediction per sample.
-
-### ⚙️ Training Objective
-  
-This project applies Supervised Fine-Tuning (SFT) with the following setup:
-
-- Base model: **Llama-3 8B**
-- Framework: **Hugging Face / TRL (SFTTrainer)**
-- Evaluation metric: **Accuracy on is_correct**
-- Goal: **Learn reasoning consistency and logical correctness detection**
-
-The fine-tuned model achieves ≈ 86 % accuracy on the validation set.
 
 ---
 
@@ -153,6 +142,8 @@ The rows correspond exactly to the order of the test dataset (test.csv).
 ---
 
 ### 📈 Key Result
+
+Goal: **Learn reasoning consistency and logical correctness detection**
 
 | Metric | Value |
 |:--------|:-------|
