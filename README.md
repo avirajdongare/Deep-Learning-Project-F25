@@ -57,10 +57,10 @@ You can download the fine-tuned model here:
 |------------|--------|
 | Model | Llama-3 8B |
 | Trainer | TRL `SFTTrainer` |
-| Epochs | 3 |
-| Batch Size | 32 |
-| Learning Rate | 1e-5 |
-| Sequence Length | 2048 |
+| Epochs | 1.2- 2 |
+| Batch Size | 34 |
+| Learning Rate | 1.2e-4 |
+| Sequence Length | 4096 |
 | Optimizer | AdamW |
 | Evaluation Metric | Accuracy |
 
